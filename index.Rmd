@@ -1,0 +1,75 @@
+---
+title: "Electroglottography: Data collection and analysis"
+author: "Stefano Coretta"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "macros.js"
+---
+
+class: center middle inverse
+
+# ANATOMY
+
+---
+
+# The vocal tract
+
+.pull-left[
+.center[
+![:scale 70%](img/Larynx_and_nearby_structures.jpg)
+]]
+
+.pull-right[
+.center[
+![:scale 90%](img/outil_bleu21_img01.jpg)
+]]
+
+???
+
+Images:
+
+- <a href="https://commons.wikimedia.org/wiki/File:Larynx_and_nearby_structures.jpg">Alan Hoofring (Illustrator)</a>, Public domain, via Wikimedia Commons
+- https://thebrain.mcgill.ca/flash/capsules/outil_bleu21.html
+
+
+---
+
+# The larynx
+
+.pull-left[
+![](img/Illu07_larynx01.jpg)
+]
+
+.pull-right[
+![](img/cf103cd0c46a2361d08957802f246e7c.jpg)
+]
+
+
+???
+
+- https://commons.wikimedia.org/wiki/File:Illu07_larynx01.jpg
+- https://www.pinterest.co.uk/pin/565201821964547797/
+
+---
+
+# The larynx
+
+.center[
+![:scale 80%](img/larynx-999.jpg)
+]
+
+???
+
+- https://www.online-sciences.com/wp-content/uploads/2021/06/larynx-999.jpg
+
+---
+
+# The glottis
+
