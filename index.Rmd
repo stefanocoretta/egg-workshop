@@ -71,5 +71,75 @@ Images:
 
 ---
 
-# The glottis
+# The vocal folds
 
+.center[
+![:scale 80%](img/E7hGWAnUUAcSzQD.jpg)
+]
+
+???
+
+https://twitter.com/ilsmedical_/status/1420973919004024834
+
+---
+
+# The vocal folds
+
+.center[
+![:scale 65%](img/Glottis-True-Vocal-Cords-2011.png.jpeg)
+]
+
+???
+
+https://www.researchgate.net/figure/Glottis-True-Vocal-Cords-2011_fig3_301765137
+
+---
+
+# The vocal folds
+
+.center[
+![:scale 100%](img/larynx.png)
+]
+
+???
+
+https://svas.tech-strategic.com/wp-content/uploads/2016/01/larynx.png
+
+---
+
+# Vocal fold vibration
+
+.center[
+![](img/vocal-folds-vibration.png)
+]
+
+---
+
+background-image: url(img/chris-robert-unsplash.jpg)
+class: bottom center inverse
+
+# BREAK
+
+---
+
+# Electroglottography
+
+.center[
+![:scale 80%](img/chen-egg.png)
+]
+
+---
+
+# Electroglottography
+
+.center[
+![:scale 70%](img/egg-signal.png)
+]
+
+---
+
+# Electroglottography
+
+.center[
+![:scale 70%](img/degg-signal.png)
+]
