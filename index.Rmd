@@ -116,6 +116,8 @@ https://svas.tech-strategic.com/wp-content/uploads/2016/01/larynx.png
 ---
 
 background-image: url(img/chris-robert-unsplash.jpg)
+background-size: cover
+
 class: bottom center inverse
 
 # BREAK
@@ -138,8 +140,83 @@ class: bottom center inverse
 
 ---
 
-# Electroglottography
+# EGG signal
+
+Vocal Fold Contact Area
+
+???
+
+Literature on what EGG signal captures.
+
+---
+
+# Glottal cycle
+
+???
+
+Literature on methods to detect glottal cycle.
+
+Terminology: contact area, closed vs open phase, instants.
+
+---
+
+# Glottal cycle: dEGG method
 
 .center[
 ![:scale 70%](img/degg-signal.png)
 ]
+
+---
+
+# Glottal cycle: dEGG method
+
+.center[
+![:scale 70%](img/glottal-cycle.png)
+]
+
+---
+
+# Use cases
+
+- Robust estimation of fundamental frequency (f0).
+
+- Detection of voiced/voiceless intervals.
+
+- Voice quality via Contact Quotient (CQ): higher CQ = creakier voice, lower CQ = breathier voice.
+
+- Vocal Folds configuration via complex methods like wavegram.
+
+---
+
+# Limitations
+
+- Only works when there is vocal fold vibration (i.e. no information about voiceless intervals).
+
+- Not as commonly used as other articulatory techniques which means not many standardised procedures.
+
+---
+
+background-image: url(img/scott-webb-ttCFWHrmWH4-unsplash.jpg)
+background-size: cover
+
+class: center inverse
+
+# BREAK
+
+???
+
+Photo by <a href="https://unsplash.com/es/@scottwebb?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Scott Webb</a> on <a href="https://unsplash.com/s/photos/guinea-pig?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+---
+
+background-image: url(img/erda-estremera-BGLdeLFuGfs-unsplash.jpg)
+background-size: cover
+
+class: bottom inverse
+
+# HANDS ON
+
+???
+
+Photo by <a href="https://unsplash.com/@erdaest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Erda Estremera</a> on <a href="https://unsplash.com/s/photos/paws?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
