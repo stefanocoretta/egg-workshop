@@ -216,7 +216,182 @@ class: bottom inverse
 
 # HANDS ON
 
+## Data collection
+
 ???
 
 Photo by <a href="https://unsplash.com/@erdaest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Erda Estremera</a> on <a href="https://unsplash.com/s/photos/paws?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
+---
+
+# Analysing the EGG signal
+
+- Pre-processing:
+
+  - Filtering.
+  
+  - Calculate first derivative (dEGG).
+  
+- Extract measurements:
+
+  - Contact Quotient (ratio between closed phase and glottal cycle).
+
+  - Wavegram (Herbst 2010).
+
+- Analyse measurements:
+
+  - ...
+  
+  - WaveGAMs (Coretta 2019g).
+
+
+---
+
+layout: true
+
+# Pre-processing
+
+---
+
+.center[
+![:scale 80%](img/01-topo.png)
+]
+
+---
+
+.center[
+![:scale 80%](img/02-topo-inv.png)
+]
+
+---
+
+The signal is inverted. Restore by multiplying the signal by -1.<sup>1</sup>
+
+```praat
+selectObject: "Sound topo"
+Multiply: -1
+```
+
+.footnote[
+[1] Not all EGG units invert the signal.
+]
+
+---
+
+.center[
+![:scale 80%](img/03-topo-rec.png)
+]
+
+---
+
+We can extract the EGG signal from Channel 2.
+
+```praat
+selectObject: "Sound topo"
+Extract one channel: 2
+```
+
+---
+
+Let's create a copy and calculate the first derivative.
+
+```praat
+# Make a copy
+selectObject: "Sound topo_ch2"
+Copy: "topo_ch2_d"
+
+# Calculate first derivative
+Formula: "self [col + 1] - self [col]"
+
+# Combine EGG and dEGG into a stereo sound
+selectObject: "Sound topo_ch2"
+plusObject: "Sound topo_ch2_d"
+Combine to stereo
+```
+
+---
+
+.center[
+![:scale 80%](img/04-topo-egg-degg.png)
+]
+
+---
+
+Let's pass-band filter the EGG signal, then we apply a smoothing filter.<sup>1</sup>
+
+```praat
+# Pass-band filter
+selectObject: "Sound topo_ch2"
+Filter (pass Hann band): 40, 10000, 100
+
+# Smoothing filter
+smooth_width = 11
+@smoothing: smooth_width
+
+# Smoothing shifts the signal
+# So let's shift it back
+sampling_period = Get sampling period
+time_lag = (smooth_width - 1) / 2 * sampling_period
+Shift times by: time_lag
+```
+
+.footnote[
+[1] See next slide for `smoothing` procedure.
+]
+
+---
+
+The following defines the `smoothing` procedure (i.e. a triangular filter).
+
+```praat
+procedure smoothing : .width
+    .weight = .width / 2 + 0.5
+
+    .formula$ = "( "
+
+    for .w to .weight - 1
+        .formula$ = .formula$ + string$(.w) + " * (self [col - " + string$(.w) + "] +
+            ...self [col - " + string$(.w) + "]) + "
+    endfor
+
+    .formula$ = .formula$ + string$(.weight) + " * (self [col]) ) / " +
+        ...string$(.weight ^ 2)
+
+    Formula: .formula$
+endproc
+```
+
+---
+
+Now we can calculate the first derivative on the smoothed signal (dEGG).
+
+```praat
+# Make a copy
+selectObject: "Sound topo_ch2"
+Copy: "topo_ch2_d"
+
+# Calculate first derivative
+Formula: "self [col + 1] - self [col]"
+```
+
+---
+
+.center[
+![:scale 80%](img/05-filt-smoo.png)
+]
+
+---
+
+layout: false
+
+# BREAK
+
+---
+
+# Extract measurements
+
+---
+
+# References
+
+<https://stefanocoretta.github.io/biblio/>
