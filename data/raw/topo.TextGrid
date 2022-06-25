@@ -1,0 +1,138 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.543620021632819 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "PhonAlign" 
+        xmin = 0 
+        xmax = 2.543620021632819 
+        intervals: size = 19 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.4297080304725789 
+            text = "#" 
+        intervals [2]:
+            xmin = 0.4297080304725789 
+            xmax = 0.48898179451943063 
+            text = "r" 
+        intervals [3]:
+            xmin = 0.48898179451943063 
+            xmax = 0.5750271771103426 
+            text = "i" 
+        intervals [4]:
+            xmin = 0.5750271771103426 
+            xmax = 0.670017871752785 
+            text = "p" 
+        intervals [5]:
+            xmin = 0.670017871752785 
+            xmax = 0.7535074509004026 
+            text = "E" 
+        intervals [6]:
+            xmin = 0.7535074509004026 
+            xmax = 0.8478680356093842 
+            text = "t" 
+        intervals [7]:
+            xmin = 0.8478680356093842 
+            xmax = 0.9107536802735403 
+            text = "e" 
+        intervals [8]:
+            xmin = 0.9107536802735403 
+            xmax = 1.0310738605361607 
+            text = "t" 
+        intervals [9]:
+            xmin = 1.0310738605361607 
+            xmax = 1.159712432860939 
+            text = "O" 
+        intervals [10]:
+            xmin = 1.159712432860939 
+            xmax = 1.2810738605361607 
+            text = "p" 
+        intervals [11]:
+            xmin = 1.2810738605361607 
+            xmax = 1.3630871884957116 
+            text = "o" 
+        intervals [12]:
+            xmin = 1.3630871884957116 
+            xmax = 1.487688512768811 
+            text = "d" 
+        intervals [13]:
+            xmin = 1.487688512768811 
+            xmax = 1.6410738605361637 
+            text = "s" 
+        intervals [14]:
+            xmin = 1.6410738605361637 
+            xmax = 1.7544370400008946 
+            text = "E" 
+        intervals [15]:
+            xmin = 1.7544370400008946 
+            xmax = 1.8534813432099966 
+            text = "m" 
+        intervals [16]:
+            xmin = 1.8534813432099966 
+            xmax = 1.9719002360826379 
+            text = "p" 
+        intervals [17]:
+            xmin = 1.9719002360826379 
+            xmax = 2.0244285065463226 
+            text = "r" 
+        intervals [18]:
+            xmin = 2.0244285065463226 
+            xmax = 2.0994440623457606 
+            text = "e" 
+        intervals [19]:
+            xmin = 2.0994440623457606 
+            xmax = 2.543620021632819 
+            text = "#" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "TokensAlign" 
+        xmin = 0 
+        xmax = 2.543620021632819 
+        intervals: size = 6 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.4297080304725789 
+            text = "#" 
+        intervals [2]:
+            xmin = 0.4297080304725789 
+            xmax = 0.9107536802735403 
+            text = "ripete" 
+        intervals [3]:
+            xmin = 0.9107536802735403 
+            xmax = 1.3630871884957116 
+            text = "topo" 
+        intervals [4]:
+            xmin = 1.3630871884957116 
+            xmax = 1.487688512768811 
+            text = "da" 
+        intervals [5]:
+            xmin = 1.487688512768811 
+            xmax = 2.0994440623457606 
+            text = "sempre" 
+        intervals [6]:
+            xmin = 2.0994440623457606 
+            xmax = 2.543620021632819 
+            text = "#" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "Activity" 
+        xmin = 0 
+        xmax = 2.543620021632819 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.4297080304725789 
+            text = "silence" 
+        intervals [2]:
+            xmin = 0.4297080304725789 
+            xmax = 2.0994440623457606 
+            text = "speech" 
+        intervals [3]:
+            xmin = 2.0994440623457606 
+            xmax = 2.543620021632819 
+            text = "silence" 
