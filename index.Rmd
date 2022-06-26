@@ -1,7 +1,7 @@
 ---
 title: "Electroglottography: Data collection and analysis"
 author: "Stefano Coretta"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+date: "2022/06/27"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -12,6 +12,21 @@ output:
       ratio: "16:9"
       beforeInit: "macros.js"
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_knit$set(root.dir = here::here())
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+theme_set(theme_minimal())
+options(
+  ggplot2.discrete.fill = c("#a6611a", "#018571", "#264653", "#2a9d8f", "#a8dadc", "#457b9d", "#e76f51")
+)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("panelset", "tachyons"))
+```
 
 class: center middle inverse
 
@@ -124,6 +139,12 @@ class: bottom center inverse
 
 ---
 
+class: center middle inverse
+
+# ELECTROGLOTTOGRAPHY
+
+---
+
 # Electroglottography
 
 .center[
@@ -140,23 +161,44 @@ class: bottom center inverse
 
 ---
 
-# EGG signal
+# EGG literature
 
-Vocal Fold Contact Area
 
-???
+.pull-left[
+- **Fabre 1957**
+  - Introduction to the EGG method.
+- **Childers and Krishnamurthy 1985**
+  - Three phases of the glottal cycle: closing, closed, opening phase.
+- **Scherer 1987**
+  -  Abduction Quotient.
+- **Titze 1990**
+  - Interpreting the EGG
+- **Baken 1992**
+  - Introduction to EGG.
+  - Don't use Closed Quotient.
+- **Marasek 1996**
+  - Steeper closing and opening slopes in EGG in stressed vowels in German.
+  - Phases of idealised glottal cycle as 6 straight segments.
+]
 
-Literature on what EGG signal captures.
+--
 
----
-
-# Glottal cycle
-
-???
-
-Literature on methods to detect glottal cycle.
-
-Terminology: contact area, closed vs open phase, instants.
+.pull-right[
+- **Herbst, Fitch and Švec 2010**
+  - Wavegram visualisation.
+- **Awan 2015**
+  - EGG vs spectral moments.
+  - Vocal tract has considerable influence on acoustic output.
+- **Hampala et al. 2016**
+  - EGG signal is more faithful during the decontacting phase.
+  - Reasonable first approximation to change in medial Vocal Fold Contact Area (VFCA).
+  - Use with care.
+- **Macerata et al. 2016**
+  - FIR pass band filter 40-10kHz.
+  - Moving average smoothing with 11 points.
+- **Herbst et al. 2017**
+  - Contact Quotient vs Closed Quotient.
+]
 
 ---
 
@@ -221,6 +263,12 @@ class: bottom inverse
 ???
 
 Photo by <a href="https://unsplash.com/@erdaest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Erda Estremera</a> on <a href="https://unsplash.com/s/photos/paws?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+---
+
+class: center middle inverse
+
+# ANALYSIS
 
 ---
 
@@ -374,6 +422,12 @@ Copy: "topo_ch2_d"
 Formula: "self [col + 1] - self [col]"
 ```
 
+--
+
+<br>
+
+Open `code/01-get-degg.praat` in Praat and run it.
+
 ---
 
 .center[
@@ -383,12 +437,118 @@ Formula: "self [col + 1] - self [col]"
 ---
 
 layout: false
+background-image: url(img/ilse-orsel-PIlkIuwFhd0-unsplash.jpg)
+background-size: cover
+
+class: bottom center inverse
 
 # BREAK
 
+???
+
+Photo by <a href="https://unsplash.com/@lgtts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ilse Orsel</a> on <a href="https://unsplash.com/s/photos/panda-sleeping?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 ---
 
-# Extract measurements
+# Calculate measurements
+
+In Praat:
+
+- Get maxima and minima of the dEGG.
+
+- Calculate the glottal period.
+
+In R:
+
+- Calculate the Contact Quotient.
+
+- Calculate f0.
+
+--
+
+<br>
+
+But you can calculate everything in Praat if you want...
+
+---
+
+# Find maxima and minima in the dEGG signal
+
+1. Get time of EGG minimum $i$ and $i+1$.
+
+2. Get time of next dEGG maximum.
+
+3. Get time of next dEGG minimum.
+
+4. Move to EGG minimum $i+1=i$ and go back to 1.
+
+--
+
+<br>
+
+Open `code/02-extract-measures.praat` and run it.
+
+---
+
+# Let's read the data in R
+
+```{r topo}
+topo <- read_csv("data/derived/topo.csv")
+topo
+```
+
+
+---
+
+# Plot dEGG max and min
+
+```{r topo-degg-max-min, fig.asp=0.4}
+topo %>%
+  pivot_longer(degg_max_rel:degg_min_rel, "degg") %>%
+  ggplot(aes(egg_min_1, value)) +
+  geom_point() +
+  xlim(1, 1.5) + ylim(0, 1)
+```
+
+---
+
+# Plot Contact Quotient
+
+```{r topo-cq, fig.asp=0.4}
+topo %>%
+  mutate(cq = degg_min_rel - degg_max_rel) %>%
+  ggplot(aes(egg_min_1, cq)) +
+  geom_point() +
+  xlim(1, 1.5) + ylim(0, 1)
+```
+
+---
+
+# Plot f0
+
+```{r topo-f0, fig.asp=0.4}
+topo %>%
+  mutate(f0 = 1000/period_dur) %>%
+  ggplot(aes(egg_min_1, f0)) +
+  geom_point() +
+  xlim(1, 1.5)
+```
+
+---
+
+background-image: url(img/erda-estremera-BGLdeLFuGfs-unsplash.jpg)
+background-size: cover
+
+class: bottom inverse
+
+# HANDS ON
+
+## Data analysis
+
+???
+
+Photo by <a href="https://unsplash.com/@erdaest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Erda Estremera</a> on <a href="https://unsplash.com/s/photos/paws?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 
 ---
 

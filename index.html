@@ -4,9 +4,12 @@
     <title>Electroglottography: Data collection and analysis</title>
     <meta charset="utf-8" />
     <meta name="author" content="Stefano Coretta" />
-    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -19,10 +22,14 @@ class: center, middle, inverse, title-slide
 ### Stefano Coretta
 ]
 .date[
-### 2016/12/12 (updated: 2022-06-15)
+### 2022/06/27
 ]
 
 ---
+
+
+
+
 
 
 class: center middle inverse
@@ -83,8 +90,502 @@ Images:
 
 ---
 
-# The glottis
+# The vocal folds
 
+.center[
+![:scale 80%](img/E7hGWAnUUAcSzQD.jpg)
+]
+
+???
+
+https://twitter.com/ilsmedical_/status/1420973919004024834
+
+---
+
+# The vocal folds
+
+.center[
+![:scale 65%](img/Glottis-True-Vocal-Cords-2011.png.jpeg)
+]
+
+???
+
+https://www.researchgate.net/figure/Glottis-True-Vocal-Cords-2011_fig3_301765137
+
+---
+
+# The vocal folds
+
+.center[
+![:scale 100%](img/larynx.png)
+]
+
+???
+
+https://svas.tech-strategic.com/wp-content/uploads/2016/01/larynx.png
+
+---
+
+# Vocal fold vibration
+
+.center[
+![](img/vocal-folds-vibration.png)
+]
+
+---
+
+background-image: url(img/chris-robert-unsplash.jpg)
+background-size: cover
+
+class: bottom center inverse
+
+# BREAK
+
+---
+
+class: center middle inverse
+
+# ELECTROGLOTTOGRAPHY
+
+---
+
+# Electroglottography
+
+.center[
+![:scale 80%](img/chen-egg.png)
+]
+
+---
+
+# Electroglottography
+
+.center[
+![:scale 70%](img/egg-signal.png)
+]
+
+---
+
+# EGG literature
+
+
+.pull-left[
+- **Fabre 1957**
+  - Introduction to the EGG method.
+- **Childers and Krishnamurthy 1985**
+  - Three phases of the glottal cycle: closing, closed, opening phase.
+- **Scherer 1987**
+  -  Abduction Quotient.
+- **Titze 1990**
+  - Interpreting the EGG
+- **Baken 1992**
+  - Introduction to EGG.
+  - Don't use Closed Quotient.
+- **Marasek 1996**
+  - Steeper closing and opening slopes in EGG in stressed vowels in German.
+  - Phases of idealised glottal cycle as 6 straight segments.
+]
+
+--
+
+.pull-right[
+- **Herbst, Fitch and Švec 2010**
+  - Wavegram visualisation.
+- **Awan 2015**
+  - EGG vs spectral moments.
+  - Vocal tract has considerable influence on acoustic output.
+- **Hampala et al. 2016**
+  - EGG signal is more faithful during the decontacting phase.
+  - Reasonable first approximation to change in medial Vocal Fold Contact Area (VFCA).
+  - Use with care.
+- **Macerata et al. 2016**
+  - FIR pass band filter 40-10kHz.
+  - Moving average smoothing with 11 points.
+- **Herbst et al. 2017**
+  - Contact Quotient vs Closed Quotient.
+]
+
+---
+
+# Glottal cycle: dEGG method
+
+.center[
+![:scale 70%](img/degg-signal.png)
+]
+
+---
+
+# Glottal cycle: dEGG method
+
+.center[
+![:scale 70%](img/glottal-cycle.png)
+]
+
+---
+
+# Use cases
+
+- Robust estimation of fundamental frequency (f0).
+
+- Detection of voiced/voiceless intervals.
+
+- Voice quality via Contact Quotient (CQ): higher CQ = creakier voice, lower CQ = breathier voice.
+
+- Vocal Folds configuration via complex methods like wavegram.
+
+---
+
+# Limitations
+
+- Only works when there is vocal fold vibration (i.e. no information about voiceless intervals).
+
+- Not as commonly used as other articulatory techniques which means not many standardised procedures.
+
+---
+
+background-image: url(img/scott-webb-ttCFWHrmWH4-unsplash.jpg)
+background-size: cover
+
+class: center inverse
+
+# BREAK
+
+???
+
+Photo by &lt;a href="https://unsplash.com/es/@scottwebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Scott Webb&lt;/a&gt; on &lt;a href="https://unsplash.com/s/photos/guinea-pig?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Unsplash&lt;/a&gt;
+
+---
+
+background-image: url(img/erda-estremera-BGLdeLFuGfs-unsplash.jpg)
+background-size: cover
+
+class: bottom inverse
+
+# HANDS ON
+
+## Data collection
+
+???
+
+Photo by &lt;a href="https://unsplash.com/@erdaest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Erda Estremera&lt;/a&gt; on &lt;a href="https://unsplash.com/s/photos/paws?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Unsplash&lt;/a&gt;
+
+---
+
+class: center middle inverse
+
+# ANALYSIS
+
+---
+
+# Analysing the EGG signal
+
+- Pre-processing:
+
+  - Filtering.
+  
+  - Calculate first derivative (dEGG).
+  
+- Extract measurements:
+
+  - Contact Quotient (ratio between closed phase and glottal cycle).
+
+  - Wavegram (Herbst 2010).
+
+- Analyse measurements:
+
+  - ...
+  
+  - WaveGAMs (Coretta 2019g).
+
+
+---
+
+layout: true
+
+# Pre-processing
+
+---
+
+.center[
+![:scale 80%](img/01-topo.png)
+]
+
+---
+
+.center[
+![:scale 80%](img/02-topo-inv.png)
+]
+
+---
+
+The signal is inverted. Restore by multiplying the signal by -1.&lt;sup&gt;1&lt;/sup&gt;
+
+```praat
+selectObject: "Sound topo"
+Multiply: -1
+```
+
+.footnote[
+[1] Not all EGG units invert the signal.
+]
+
+---
+
+.center[
+![:scale 80%](img/03-topo-rec.png)
+]
+
+---
+
+We can extract the EGG signal from Channel 2.
+
+```praat
+selectObject: "Sound topo"
+Extract one channel: 2
+```
+
+---
+
+Let's create a copy and calculate the first derivative.
+
+```praat
+# Make a copy
+selectObject: "Sound topo_ch2"
+Copy: "topo_ch2_d"
+
+# Calculate first derivative
+Formula: "self [col + 1] - self [col]"
+
+# Combine EGG and dEGG into a stereo sound
+selectObject: "Sound topo_ch2"
+plusObject: "Sound topo_ch2_d"
+Combine to stereo
+```
+
+---
+
+.center[
+![:scale 80%](img/04-topo-egg-degg.png)
+]
+
+---
+
+Let's pass-band filter the EGG signal, then we apply a smoothing filter.&lt;sup&gt;1&lt;/sup&gt;
+
+```praat
+# Pass-band filter
+selectObject: "Sound topo_ch2"
+Filter (pass Hann band): 40, 10000, 100
+
+# Smoothing filter
+smooth_width = 11
+@smoothing: smooth_width
+
+# Smoothing shifts the signal
+# So let's shift it back
+sampling_period = Get sampling period
+time_lag = (smooth_width - 1) / 2 * sampling_period
+Shift times by: time_lag
+```
+
+.footnote[
+[1] See next slide for `smoothing` procedure.
+]
+
+---
+
+The following defines the `smoothing` procedure (i.e. a triangular filter).
+
+```praat
+procedure smoothing : .width
+    .weight = .width / 2 + 0.5
+
+    .formula$ = "( "
+
+    for .w to .weight - 1
+        .formula$ = .formula$ + string$(.w) + " * (self [col - " + string$(.w) + "] +
+            ...self [col - " + string$(.w) + "]) + "
+    endfor
+
+    .formula$ = .formula$ + string$(.weight) + " * (self [col]) ) / " +
+        ...string$(.weight ^ 2)
+
+    Formula: .formula$
+endproc
+```
+
+---
+
+Now we can calculate the first derivative on the smoothed signal (dEGG).
+
+```praat
+# Make a copy
+selectObject: "Sound topo_ch2"
+Copy: "topo_ch2_d"
+
+# Calculate first derivative
+Formula: "self [col + 1] - self [col]"
+```
+
+--
+
+&lt;br&gt;
+
+Open `code/01-get-degg.praat` in Praat and run it.
+
+---
+
+.center[
+![:scale 80%](img/05-filt-smoo.png)
+]
+
+---
+
+layout: false
+background-image: url(img/ilse-orsel-PIlkIuwFhd0-unsplash.jpg)
+background-size: cover
+
+class: bottom center inverse
+
+# BREAK
+
+???
+
+Photo by &lt;a href="https://unsplash.com/@lgtts?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Ilse Orsel&lt;/a&gt; on &lt;a href="https://unsplash.com/s/photos/panda-sleeping?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Unsplash&lt;/a&gt;
+
+---
+
+# Calculate measurements
+
+In Praat:
+
+- Get maxima and minima of the dEGG.
+
+- Calculate the glottal period.
+
+In R:
+
+- Calculate the Contact Quotient.
+
+- Calculate f0.
+
+--
+
+&lt;br&gt;
+
+But you can calculate everything in Praat if you want...
+
+---
+
+# Find maxima and minima in the dEGG signal
+
+1. Get time of EGG minimum `\(i\)` and `\(i+1\)`.
+
+2. Get time of next dEGG maximum.
+
+3. Get time of next dEGG minimum.
+
+4. Move to EGG minimum `\(i+1=i\)` and go back to 1.
+
+--
+
+&lt;br&gt;
+
+Open `code/02-extract-measures.praat` and run it.
+
+---
+
+# Let's read the data in R
+
+
+```r
+topo &lt;- read_csv("data/derived/topo.csv")
+topo
+```
+
+```
+## # A tibble: 180 × 7
+##    period_dur egg_min_1 degg_max degg_min egg_min_2 degg_max_rel degg_min_rel
+##         &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+##  1       6.01     0.445    0.446    0.449     0.451       0.194         0.594
+##  2       6.28     0.451    0.453    0.454     0.457       0.244         0.543
+##  3       5.36     0.457    0.458    0.460     0.463       0.153         0.536
+##  4       7.02     0.463    0.464    0.466     0.470       0.186         0.434
+##  5       6.38     0.470    0.470    0.474     0.476       0.0953        0.619
+##  6       7.05     0.476    0.478    0.480     0.483       0.203         0.498
+##  7       6.74     0.483    0.484    0.486     0.490       0.173         0.385
+##  8       5.90     0.490    0.491    0.492     0.496       0.131         0.419
+##  9       6.04     0.496    0.497    0.498     0.502       0.120         0.370
+## 10       5.48     0.502    0.502    0.504     0.507       0.103         0.374
+## # … with 170 more rows
+```
+
+
+---
+
+# Plot dEGG max and min
+
+
+```r
+topo %&gt;%
+  pivot_longer(degg_max_rel:degg_min_rel, "degg") %&gt;%
+  ggplot(aes(egg_min_1, value)) +
+  geom_point() +
+  xlim(1, 1.5) + ylim(0, 1)
+```
+
+![](index_files/figure-html/topo-degg-max-min-1.png)&lt;!-- --&gt;
+
+---
+
+# Plot Contact Quotient
+
+
+```r
+topo %&gt;%
+  mutate(cq = degg_min_rel - degg_max_rel) %&gt;%
+  ggplot(aes(egg_min_1, cq)) +
+  geom_point() +
+  xlim(1, 1.5) + ylim(0, 1)
+```
+
+![](index_files/figure-html/topo-cq-1.png)&lt;!-- --&gt;
+
+---
+
+# Plot f0
+
+
+```r
+topo %&gt;%
+  mutate(f0 = 1000/period_dur) %&gt;%
+  ggplot(aes(egg_min_1, f0)) +
+  geom_point() +
+  xlim(1, 1.5)
+```
+
+![](index_files/figure-html/topo-f0-1.png)&lt;!-- --&gt;
+
+---
+
+background-image: url(img/erda-estremera-BGLdeLFuGfs-unsplash.jpg)
+background-size: cover
+
+class: bottom inverse
+
+# HANDS ON
+
+## Data analysis
+
+???
+
+Photo by &lt;a href="https://unsplash.com/@erdaest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Erda Estremera&lt;/a&gt; on &lt;a href="https://unsplash.com/s/photos/paws?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"&gt;Unsplash&lt;/a&gt;
+
+
+---
+
+# References
+
+&lt;https://stefanocoretta.github.io/biblio/&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
