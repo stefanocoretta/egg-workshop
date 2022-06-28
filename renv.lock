@@ -1036,6 +1036,16 @@
         "vctrs"
       ]
     },
+    "here": {
+      "Package": "here",
+      "Version": "1.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "24b224366f9c2e7534d2344d10d59211",
+      "Requirements": [
+        "rprojroot"
+      ]
+    },
     "highr": {
       "Package": "highr",
       "Version": "0.9",
@@ -2108,6 +2118,20 @@
       "Repository": "CRAN",
       "Hash": "c23666fdb7789c8a45e65340bb334607",
       "Requirements": []
+    },
+    "speakr": {
+      "Package": "speakr",
+      "Version": "3.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4d501c702c08e4ba008ce5503e7bcb99",
+      "Requirements": [
+        "ggplot2",
+        "lifecycle",
+        "readr",
+        "stringr",
+        "tibble"
+      ]
     },
     "stringi": {
       "Package": "stringi",
