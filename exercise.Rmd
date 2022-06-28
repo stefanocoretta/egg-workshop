@@ -1,0 +1,58 @@
+---
+title: "Mandarin tones and voicing"
+author: "Stefano Coretta"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = here::here())
+library(tidyverse)
+library(speakr)
+```
+
+# Run Praat script
+
+```{r praat-run}
+speakr::praat_run("./code/cmn.praat")
+```
+
+# Read the data table
+
+```{r read-cmn}
+cmn <- read_csv("data/derived/cmn.csv") %>%
+  mutate(
+    cq = degg_min_rel - degg_max_rel,
+    f0 = 1000/period_dur,
+    norm_time = (egg_min_1 - int_start) / (int_end - int_start),
+    tone = str_sub(word, 3),
+    c1 = str_sub(word, 1, 1)
+  ) %>%
+  filter(
+    f0 < 400,
+    cq > 0 & cq < 1
+  )
+```
+
+# Plot f0
+
+```{r plot-f0}
+cmn %>%
+  ggplot(aes(norm_time, f0, colour = tone)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(method = "gam", formula = y ~ s(x, k = 4)) +
+  facet_grid(~ c1) +
+  scale_color_brewer(palette = "Dark2")
+```
+
+# Plot CQ
+
+```{r plot-cq}
+cmn %>%
+  ggplot(aes(norm_time, cq, colour = tone)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(method = "gam", formula = y ~ s(x, k = 4)) +
+  facet_grid(~ c1) +
+  scale_color_brewer(palette = "Dark2")
+```
